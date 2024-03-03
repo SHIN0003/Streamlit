@@ -8,6 +8,8 @@ import seaborn as sns
 df = pd.read_excel("crop yield data sheet.xlsx")
 df = df.dropna().groupby("Yeild (Q/acre)").sum().reset_index()
 
+st.button(":boat:")
+
 melted_df = df.melt(id_vars=['Yeild (Q/acre)'], 
                      var_name='Category', 
                      value_name='Value')
@@ -26,5 +28,7 @@ sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm")
 plt.title('Correlation Heatmap of Factors and Yield')
 st.pyplot(plt)
 
+
 st.bar_chart(df, x = "Yeild (Q/acre)", y = "Rain Fall (mm)")
+df = df.iloc[3:10]
 st.table(df)
